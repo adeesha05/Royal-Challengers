@@ -22,6 +22,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 // Auth routes
 app.use('/api/auth', require('./routes/auth'));
+// Gallery routes
+app.use('/api/gallery', require('./routes/gallery'));
+// Serve uploaded images statically
+app.use('/uploads', express.static(require('path').join(__dirname, 'uploads')));
 
 app.get('/', (req, res) => {
   res.send('Global Image API is running');
